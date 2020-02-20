@@ -1,38 +1,44 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.logging.Logger;
+
 public class TestDice{
-    @Test
-    public void testCraps() {
-        // Given
+    private static final Logger LOGGER = Logger.getLogger(TestDice.class.getName());
 
-        // When
-        Dice crapsDice = new Dice("c");
+        @Test
+        public void diceConstructorTest(){
+            Dice dice = new Dice(5);
+            Integer expected = 5;
+
+            Assert.assertEquals(expected, dice.getRolled());
+        }
+
+        @Test
+        public void diceConstructorTest1(){
+            Dice dicey = new Dice(2);
+            Integer expected = 2;
+
+            Assert.assertEquals(expected, dicey.getRolled());
+        }
 
 
-        // Then
+        @Test
+        public void tossAndSumTest(){
+            Dice dice1 = new Dice(2);
+            Integer actual = dice1.tossAndSum();
 
-        Integer actualCraps = crapsDice.tossAndSum();
+            Assert.assertTrue(actual >= 2 && actual <= 12);
+        }
 
+        @Test
+        public void tossAndSumTest1(){
+            Dice dice2 = new Dice(4);
+            Integer actual = dice2.tossAndSum();
 
-        Assert.assertTrue(actualCraps <= 42);
+            Assert.assertTrue(actual >= 4 && actual <= 24);
+        }
 
     }
 
-    @Test
-    public void testYatzee() {
-        // Given
 
-        // When
-
-        Dice yatzeeDice = new Dice("y");
-
-        // Then
-
-
-        Integer actualYatzee = yatzeeDice.tossAndSum();
-
-
-        Assert.assertTrue(actualYatzee <= 105);
-    }
-}

@@ -1,34 +1,34 @@
+
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class Dice {
-String game;
+    private static final Logger LOGGER = Logger.getLogger(Dice.class.getName());
 
-    public Dice(String pickGame) {
-        this.game = pickGame;
+    Integer rolls;
+
+    public Dice(Integer rolls) {
+        this.rolls = rolls;
+
     }
-
 
 
     public Integer tossAndSum() {
-        Random random = new Random();
+        int sides = 6;
         Integer sum = 0;
-        int toss;
-        int randNum;
-        if (game.equals("c")) {
-            toss = 2;
-            randNum = random.nextInt(42);
-        }
-        else{
-            toss = 5;
-            randNum = random.nextInt(105);
-        }
-         int i = 1;
-        while(i <= toss){
-            sum+=randNum;
+        int i = 1;
+        while (i <= rolls) {
+            Integer die = (int) (Math.random() * sides) + 1;
+            sum += die;
             i++;
         }
-        return sum;
 
+        return sum;
     }
+
+    public Integer getRolled(){
+        return rolls;
+    }
+
 
 }
