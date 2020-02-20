@@ -25,7 +25,7 @@ public Bins bin;
 
        sim.runSimulation();
 
-        //sim.printResults();
+        sim.printResults();
     }
 
     public void runSimulation() {
@@ -39,7 +39,25 @@ public Bins bin;
 
     }
 
-//    private void printResults() {
-//    }
+    private void printResults() {
+        String header = String.format("***\nSimulation of %s dice tossed for %s times.\n***", numOfDie.toString(), numOfRolls.toString());
+        LOGGER.info(header);
 
-}
+        String a = "a";
+        String b = "b";
+        String c = "c";
+
+
+
+         for(int i = low; i <= high; i++) {
+            Integer x = bin.getBin(i);
+             //String body = String.format("%s : %s: %s *", a,b,x.toString());
+             LOGGER.info(x.toString());
+         }
+
+        }
+
+
+    }
+
+
