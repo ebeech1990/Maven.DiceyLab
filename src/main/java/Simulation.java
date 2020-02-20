@@ -21,7 +21,7 @@ public Bins bin;
 
     public static void main(String[] args) {
 
-        Simulation sim = new Simulation(2, 5);
+        Simulation sim = new Simulation(2, 1000000);
 
        sim.runSimulation();
 
@@ -40,20 +40,24 @@ public Bins bin;
     }
 
     private void printResults() {
-        String header = String.format("***\nSimulation of %s dice tossed for %s times.\n***", numOfDie.toString(), numOfRolls.toString());
-        LOGGER.info(header);
+       String header = String.format("***\nSimulation of %s dice tossed for %s times.\n***", numOfDie.toString(), numOfRolls.toString());
+       LOGGER.info(header);
 
-        String a = "a";
-        String b = "b";
-        String c = "c";
+        int possiblities = 1;
 
-
-
-         for(int i = low; i <= high; i++) {
+        for(int i = low; i <= high; i++){
             Integer x = bin.getBin(i);
-             //String body = String.format("%s : %s: %s *", a,b,x.toString());
-             LOGGER.info(x.toString());
-         }
+            possiblities++;
+            int percent = (x*100) /numOfRolls;
+            String star = "";
+            for(int j = 1; j <= percent; j++) {
+                star += "*";
+            }
+            String body = String.format("%s : %s : %s %s", possiblities, x.toString(), percent, star);
+            LOGGER.info(body);
+        }
+
+
 
         }
 
